@@ -1,0 +1,161 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #00ffc8;
+  text-shadow: 2px 2px 5px rgba(0, 255, 200, 0.7);
+}
+
+/* Upload Box */
+.upload-box {
+  margin-bottom: 40px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
+}
+
+.upload-box h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #59dbf7;
+}
+
+/* Button Styling */
+button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(1);
+}
+
+/* Custom File Upload */
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.5);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* Progress Bar Container */
+.progress-container {
+  margin-top: 20px;
+  width: 100%;
+  background: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #4CAF50;
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+  margin-top: 5px;
+}
+
+/* File Links Section */
+.files-box a {
+  color: #00ffc8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.files-box a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 40px;
+  padding: 10px;
+}
+
+footer p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+footer a {
+  color: #00ffc8;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+
+fileNameDisplay {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #888;
+}
+

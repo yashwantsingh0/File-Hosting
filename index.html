@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>File Hosting</title>
+  <link rel="stylesheet" href="index_files/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>📁 File Hosting</h1>
+    </header>
+
+    <main>
+      <section class="upload-box">
+        <h2>📤 Upload a File</h2>
+        <form action="upload.php" method="POST" id="uploadForm" enctype="multipart/form-data">
+          <label for="file" class="custom-file-upload">
+            📂 Choose File
+            <input type="file" name="file" id="file" required>
+          </label>
+          
+          <div id="fileNameDisplay" style="margin-top: 8px; color: #555;">No file chosen</div> <!-- Add this -->
+        
+          <button type="submit" id="uploadButton">Upload</button>
+        </form>
+        
+      
+        <div class="progress-container" id="progressContainer" style="display: none;">
+          <div class="progress-bar" id="progressBar"></div>
+          <div class="progress-text" id="progressText">0%</div>
+        </div>
+      </section>
+
+      <section class="files-box">
+        <h2>📁 <a href="shared" target="_blank">View Hosted Files</a></h2>
+      </section>
+    </main>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <footer>
+      <p>© 2021-2025 | Designed by <a href="https://twitter.com/yashwantsingh_1" target="_blank">@yashwantsingh_1</a></p>
+    </footer>
+  </div>
+
+  <script src="/index_files/script.js"></script>
+</body>
+</html>
