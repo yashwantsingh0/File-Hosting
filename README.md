@@ -1,12 +1,100 @@
-# File-Hosting
-File Hosting Webpage for Apache/Other Webservers
-This is code for a file hosting platform with an intuitive interface for users to upload files and view hosted content. The page is structured into several key sections:
+# File Hosting Webpage
 
-    Header: Displays the title "File Hosting" with a folder emoji for a user-friendly, clean appearance.
+A user-friendly file hosting platform for Apache or other web servers, featuring an intuitive interface for uploading and viewing files.
 
-    Main Content:
-        Upload Section: Users can easily upload files using a form that includes a file input field styled with a custom button (📂 Choose File). The upload form uses POST to send the file to upload.php and includes an indicator to show the file name once selected. There’s also a progress bar that appears when the upload is in progress, giving users feedback on the upload completion percentage.
+---
 
-        View Hosted Files Section: A link to view the hosted files is available under the "View Hosted Files" section. Clicking the link will open a new window where users can browse the uploaded content.
+## Overview
 
-Overall, this page is a user-friendly file hosting interface with an attractive design, offering a simple process for uploading and managing files. The progress bar and file name display enhance the user experience by providing real-time feedback.
+The webpage consists of:
+
+- **Header:** Displays the title *File Hosting* with a folder emoji for a clean, welcoming appearance.
+
+- **Main Content:**
+  - **Upload Section:** Users upload files via a form with a custom styled button (`📂 Choose File`). The upload form posts to `upload.php`, shows the selected file name, and displays a progress bar during uploads for real-time feedback.
+  - **View Hosted Files Section:** Provides a link to browse uploaded files in a new tab.
+
+The design focuses on simplicity and usability with visual feedback for a smooth user experience.
+
+---
+
+## How to Install on Fresh Kali Linux
+
+### 🔧 Step 1: Install Apache & PHP
+
+```bash
+sudo apt update
+sudo apt install apache2 php libapache2-mod-php default-jdk unzip -y 
+sudo systemctl start apache2
+sudo systemctl enable apache2
+```
+
+📁 STEP 2: Setup Your Project Directory
+
+Let’s assume your files are in a folder like ~/Downloads/my_file_hosting_site.
+
+Copy them to the Apache root:
+```
+sudo rm -rf /var/www/html/*
+sudo cp -r ~/Downloads/my_file_hosting_site/* /var/www/html/
+sudo chown -R www-data:www-data /var/www/html
+```
+Check your structure is correct:
+
+tree /var/www/html
+
+You should see:
+```
+/var/www/html
+├── index.html
+├── upload.php
+├── shared/
+│   ├── index.php
+│   └── files/
+├── index_files/
+│   ├── style.css
+│   └── script.js
+```
+📂 STEP 3: Create the Upload Directory
+
+Your PHP uploads go to /shared/files/, so ensure it exists:
+```
+sudo mkdir -p /var/www/html/shared/files
+sudo chown -R www-data:www-data /var/www/html/shared/files
+sudo chmod -R 755 /var/www/html/shared/files
+```
+⚙️ STEP 4: Allow File Uploads (if needed)
+
+Edit the PHP config to allow large files:
+```
+sudo nano /etc/php/*/apache2/php.ini
+```
+Change these values:
+```
+file_uploads = On
+upload_max_filesize = 100M
+post_max_size = 100M
+```
+Restart Apache:
+```
+sudo systemctl restart apache2
+```
+🌐 STEP 5: Test in Browser
+
+Open:
+
+http://localhost
+
+
+If needed, allow Apache through UFW:
+```
+sudo ufw allow 80/tcp
+sudo ufw enable
+```
+✅ BONUS (Optional Hardening)
+
+    Prevent directory listing: create .htaccess in /shared/files/:
+
+echo "Options -Indexes" | sudo tee /var/www/html/shared/files/.htaccess
+
+    Add a simple .htaccess password for deleting files (if you want that later)
